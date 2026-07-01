@@ -1,0 +1,21 @@
+type User @table {
+  email: String!
+  displayName: String!
+  role: String!
+  createdAt: Timestamp!
+  photoUrl: String
+  bio: String
+  updatedAt: Timestamp
+}
+
+type Meeting @table {
+  member: User!
+  consultant: User!
+  startTime: Timestamp
+  endTime: Timestamp
+  status: String!
+  stripeCheckoutSessionId: String!
+  stripeProductId: String!
+  calendlyScheduleUrl: String
+  calendlyEventUri: String
+}

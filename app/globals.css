@@ -1,0 +1,57 @@
+@import "tailwindcss";
+@source "../node_modules/@ybot1122/toby-ui/dist";
+
+@theme {
+  --color-coaching-blue: #1470af;
+  --color-coaching-light-blue: #8eb6dc;
+  --color-primary-background: #ffffff;
+  --color-coaching-gray: #f3f4f6;
+  --color-coaching-dark-gray: #d1d5db;
+  --color-coaching-black: #000000;
+  --color-coaching-red: #dc2626;
+  --color-coaching-yellow: #fff82f;
+
+  --animate-slide-up-fade-in: slide-up-fade-in 0.7s ease-out;
+  @keyframes slide-up-fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+
+  --animate-slide-right-fade-in: slide-right-fade-in 1.4s ease-out;
+  @keyframes slide-right-fade-in {
+    0% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    50% {
+      opacity: 0
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+  }
+}
+
+/* Responsive heading styles */
+h1 {
+  @apply text-5xl sm:text-6xl;
+}
+
+h2 {
+  @apply text-2xl sm:text-3xl;
+}
+
+h3 {
+  @apply text-2xl;
+}
+
+p {
+  @apply text-lg sm:text-xl;
+}

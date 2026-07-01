@@ -1,0 +1,79 @@
+import Star from "@/components/common/Star";
+import Button from "@/components/common/Button";
+
+export default function BuyCard({
+  href,
+  title,
+  price,
+  priceEntice,
+  indented,
+  bg,
+  label,
+  details,
+  highlight,
+  highlightLevel = 1,
+  bestValue = false,
+  listType = "dot",
+}: {
+  href: string;
+  title: string;
+  priceEntice?: string;
+  price?: string;
+  indented: boolean;
+  bg: "gray" | "white";
+  label?: string;
+  details: string[];
+  highlight?: string;
+  highlightLevel?: 1 | 2;
+  bestValue?: boolean;
+  listType?: "dot" | "star";
+}) {
+  let highlightClass = "mx-auto font-bold ";
+  if (highlightLevel === 1) {
+    highlightClass += "";
+  } else if (highlightLevel === 2) {
+    highlightClass += "font-bold bg-coaching-yellow";
+  }
+
+  return (
+    <div
+      className={`col-span-1 bg-${bg} pb-10 flex flex-col justify-between ${
+        indented && "md:translate-y-10"
+      }`}
+    >
+      <div className="h-[24px] bg-coaching-light-blue" />
+      <h3 className="text-coaching-blue mb-5 px-2 mt-10">{title}</h3>
+
+      <ul
+        className={`text-left max-w-[75%] mx-auto ${
+          listType === "dot" ? "list-disc" : ""
+        }`}
+      >
+        {details.map((d) => (
+          <li key={d} className="mb-2 flex items-center gap-1">
+            {listType === "star" && <Star color="text-coaching-blue" />}
+            {d}
+          </li>
+        ))}
+      </ul>
+
+      {price && <p className="text-coaching-blue mt-5">{price}</p>}
+      {priceEntice && <p className="mb-5">{priceEntice}</p>}
+      {bestValue && (
+        <div className="relative w-[125px] mx-auto my-2 flex justify-center items-center">
+          <span
+            className="absolute inset-0 -skew-y-6 bg-coaching-yellow z-0 rounded-[6px]"
+            aria-hidden="true"
+          />
+          <p className="relative font-bold text-center z-10">18% OFF</p>
+        </div>
+      )}
+      {highlight && <p className={highlightClass}>{highlight}</p>}
+      <div className="text-center mt-5">
+        <Button href={href} variant="primary">
+          {label ?? "Schedule"}
+        </Button>
+      </div>
+    </div>
+  );
+}
