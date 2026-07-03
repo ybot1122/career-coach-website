@@ -42,7 +42,18 @@ export interface GetMeetingVariables {
   meetingId: UUIDString;
 }
 
-export interface GetUserData {}
+export interface GetUserData {
+  user?: {
+    id: UUIDString;
+    displayName: string;
+    email: string;
+    role: string;
+    createdAt: TimestampString;
+    photoUrl?: string | null;
+    bio?: string | null;
+    updatedAt?: TimestampString | null;
+  } | null;
+}
 
 export interface GetUserVariables {
   id: UUIDString;

@@ -1,4 +1,4 @@
-type User @table {
+type User @table(name: "users") {
   email: String!
   displayName: String!
   role: String!
@@ -8,7 +8,7 @@ type User @table {
   updatedAt: Timestamp
 }
 
-type Meeting @table {
+type Meeting @table(name: "meetings") {
   member: User!
   consultant: User!
   startTime: Timestamp

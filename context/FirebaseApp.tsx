@@ -22,8 +22,7 @@ type FirebaseContextType = {
   isInitialized: boolean;
   error: string | null;
   user: Auth["currentUser"] | null | undefined;
-  // @ts-ignore FIXME
-  userProfile: DataConnectClient.GetUserData["user"] | null;
+  userProfile: NonNullable<DataConnectClient.GetUserData["user"]> | null;
   loadUserProfile: null | (() => Promise<void>);
   dataConnect: DataConnectClientType;
 };
@@ -59,8 +58,7 @@ export const FirebaseProvider = ({ children }: { children: ReactNode }) => {
     undefined,
   );
   const [userProfile, setUserProfile] = useState<
-    // @ts-ignore FIXME
-    DataConnectClient.GetUserData["user"] | null
+    NonNullable<DataConnectClient.GetUserData["user"]> | null
   >(null);
   const [analytics, setAnalytics] = useState<Analytics | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);
@@ -159,11 +157,10 @@ export const FirebaseProvider = ({ children }: { children: ReactNode }) => {
     const currentUser = auth.currentUser;
     if (!currentUser) return;
 
-    const user_profile = await DataConnectClient.getUser({
+    const userProfileResponse = await DataConnectClient.getUser({
       id: currentUser.uid,
     });
-    // @ts-ignore FIXME
-    setUserProfile(user_profile?.data?.user);
+    setUserProfile(userProfileResponse?.data?.user ?? null);
   }, [auth]);
 
   return (
