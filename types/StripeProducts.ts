@@ -1,20 +1,20 @@
 import { CoachEnum } from "@/types/Coaches";
 
-const _useLiveProdId = true;
+const _useLiveProdId = false;
 const _packageNamePrefix = _useLiveProdId ? "" : "[TEST] ";
 
-/* TOBY */
+/* TOBY - updated */
 export const TOBY_4_SESSION = _useLiveProdId
-  ? "prod_QdkDV597qIRlL2"
-  : "prod_QbpN5CHqhtRztl";
+  ? "n/a"
+  : "prod_Uou0wup6f6vpU9";
 export const TOBY_12_SESSION_LITE = _useLiveProdId
-  ? "prod_QdkbOvOl2YlVJo"
-  : "prod_Qc58Zf5hDiB2pL";
+  ? "n/a"
+  : "prod_UotzyovyDYXYUr";
 export const TOBY_12_SESSION = _useLiveProdId
-  ? "prod_QdkN14oCdjctpe"
-  : "prod_Qc597imtA9qcBq";
-export const TOBY_SINGLE_60M_SESSION = "prod_St03uycixzkS6K";
-export const TOBY_SINGLE_30M_SESSION = "prod_Stoysmbca1ukTp";
+  ? "n/a"
+  : "prod_Uou0Pny2YM2w4y";
+export const TOBY_SINGLE_60M_SESSION = "prod_UotwL0RieuhMaL";
+export const TOBY_SINGLE_30M_SESSION = "prod_UotvBefhic4ScX";
 
 export const TOBY_4_SESSION_PAYMENT_LINK = _useLiveProdId
   ? "https://buy.stripe.com/6oE3eL80G74C4bS147"
