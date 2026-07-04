@@ -1,8 +1,9 @@
 type User @table(name: "users") {
+  id: String! @default(expr: "auth.uid")
   email: String!
   displayName: String!
   role: String!
-  createdAt: Timestamp!
+  createdAt: Timestamp! @default(expr: "request.time")
   photoUrl: String
   bio: String
   updatedAt: Timestamp

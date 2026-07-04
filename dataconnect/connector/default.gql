@@ -1,7 +1,7 @@
 # firebase deploy --only dataconnect
 # firebase dataconnect:sdk:generate
 
-query MeetingsByConsultantId($consultantId: UUID!) @auth(level: USER) {
+query MeetingsByConsultantId($consultantId: String!) @auth(level: USER) {
   user(id: $consultantId) @redact {
     id @check(expr: "this == auth.uid", message: "Disallowed operation")
   }
@@ -60,7 +60,7 @@ mutation UpdateMeetingCalendlyScheduleUrl(
   meeting_update(id: $id, data: { calendlyScheduleUrl: $calendlyScheduleUrl })
 }
 
-mutation UpdateUserProfilePicture($photoUrl: String!, $id: UUID!)
+mutation UpdateUserProfilePicture($photoUrl: String!, $id: String!)
 @auth(level: NO_ACCESS) {
   user_update(id: $id, data: { photoUrl: $photoUrl })
 }
@@ -68,20 +68,18 @@ mutation UpdateUserProfilePicture($photoUrl: String!, $id: UUID!)
 mutation InsertUser(
   $displayName: String!
   $email: String!
-  $createdAt: Timestamp!
 ) @auth(level: USER) {
   user_insert(
     data: {
       id_expr: "auth.uid"
       displayName: $displayName
       email: $email
-      createdAt: $createdAt
       role: "member"
     }
   )
 }
 
-query GetUser($id: UUID!) @auth(level: USER) {
+query GetUser($id: String!) @auth(level: USER) {
   user(id: $id) @redact {
     id @check(expr: "this == auth.uid", message: "Disallowed operation")
     displayName

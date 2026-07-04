@@ -98,7 +98,7 @@ The `MeetingsByConsultantId` query requires an argument of type `MeetingsByConsu
 
 ```typescript
 export interface MeetingsByConsultantIdVariables {
-  consultantId: UUIDString;
+  consultantId: string;
 }
 ```
 ### Return Type
@@ -110,7 +110,7 @@ export interface MeetingsByConsultantIdData {
   meetings: ({
     id: UUIDString;
     member: {
-      id: UUIDString;
+      id: string;
       displayName: string;
       email: string;
       photoUrl?: string | null;
@@ -225,7 +225,7 @@ The `data` property is an object of type `AllConsultantProfilePicturesAndIdsData
 ```typescript
 export interface AllConsultantProfilePicturesAndIdsData {
   users: ({
-    id: UUIDString;
+    id: string;
     photoUrl?: string | null;
   } & User_Key)[];
 }
@@ -327,10 +327,10 @@ export interface GetMeetingData {
   meeting?: {
     id: UUIDString;
     member: {
-      id: UUIDString;
+      id: string;
     } & User_Key;
     consultant: {
-      id: UUIDString;
+      id: string;
     } & User_Key;
   } & Meeting_Key;
 }
@@ -432,7 +432,7 @@ The `GetUser` query requires an argument of type `GetUserVariables`, which is de
 
 ```typescript
 export interface GetUserVariables {
-  id: UUIDString;
+  id: string;
 }
 ```
 ### Return Type
@@ -528,7 +528,7 @@ export interface MeetingsForCurrentUserData {
   meetings: ({
     id: UUIDString;
     consultant: {
-      id: UUIDString;
+      id: string;
       displayName: string;
     } & User_Key;
     endTime?: TimestampString | null;
@@ -872,7 +872,7 @@ The `UpdateUserProfilePicture` mutation requires an argument of type `UpdateUser
 ```typescript
 export interface UpdateUserProfilePictureVariables {
   photoUrl: string;
-  id: UUIDString;
+  id: string;
 }
 ```
 ### Return Type
@@ -985,7 +985,6 @@ The `InsertUser` mutation requires an argument of type `InsertUserVariables`, wh
 export interface InsertUserVariables {
   displayName: string;
   email: string;
-  createdAt: TimestampString;
 }
 ```
 ### Return Type
@@ -1007,14 +1006,13 @@ import { connectorConfig, insertUser, InsertUserVariables } from '@tobyscoaching
 const insertUserVars: InsertUserVariables = {
   displayName: ..., 
   email: ..., 
-  createdAt: ..., 
 };
 
 // Call the `insertUser()` function to execute the mutation.
 // You can use the `await` keyword to wait for the promise to resolve.
 const { data } = await insertUser(insertUserVars);
 // Variables can be defined inline as well.
-const { data } = await insertUser({ displayName: ..., email: ..., createdAt: ..., });
+const { data } = await insertUser({ displayName: ..., email: ..., });
 
 // You can also pass in a `DataConnect` instance to the action shortcut function.
 const dataConnect = getDataConnect(connectorConfig);
@@ -1039,13 +1037,12 @@ import { connectorConfig, insertUserRef, InsertUserVariables } from '@tobyscoach
 const insertUserVars: InsertUserVariables = {
   displayName: ..., 
   email: ..., 
-  createdAt: ..., 
 };
 
 // Call the `insertUserRef()` function to get a reference to the mutation.
 const ref = insertUserRef(insertUserVars);
 // Variables can be defined inline as well.
-const ref = insertUserRef({ displayName: ..., email: ..., createdAt: ..., });
+const ref = insertUserRef({ displayName: ..., email: ..., });
 
 // You can also pass in a `DataConnect` instance to the `MutationRef` function.
 const dataConnect = getDataConnect(connectorConfig);

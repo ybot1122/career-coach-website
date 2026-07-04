@@ -35,7 +35,6 @@ export async function registerUser(
     const result = await dataConnect.insertUser({
       displayName: name,
       email,
-      createdAt: new Date().toISOString(),
     });
 
     return { success: true, email, password };
