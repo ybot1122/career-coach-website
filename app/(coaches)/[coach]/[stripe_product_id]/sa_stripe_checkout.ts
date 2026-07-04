@@ -20,9 +20,6 @@ export async function fetchClientSecret({
 }): Promise<string> {
   const origin = (await headers()).get("origin");
 
-  // TODO: if the purchaser is a consultant, cancel transaction and show error.
-  // we dont support consultants buying from other consultants at this time.
-
   const [product, decodedToken] = await Promise.all([
     stripe.products.retrieve(product_id),
     adminAuth.verifyIdToken(id_token),
@@ -57,7 +54,7 @@ export async function fetchClientSecret({
 
   // Create Checkout Sessions from body params.
   const session = await stripe.checkout.sessions.create({
-    ui_mode: "embedded",
+    ui_mode: "embedded_page",
     line_items: [
       {
         price: price_id,

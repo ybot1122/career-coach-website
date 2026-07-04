@@ -2,7 +2,7 @@ import * as admin from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
 import { getDataConnect } from "firebase-admin/data-connect";
 
-let serviceAccount: admin.ServiceAccount = JSON.parse(
+let serviceAccount = JSON.parse(
   process.env.FIREBASE_ADMIN_CREDENTIALS!,
 );
 
@@ -13,9 +13,9 @@ if (!serviceAccount) {
 
 // Check if service account has required fields
 if (
-  !serviceAccount.projectId ||
-  !serviceAccount.privateKey ||
-  !serviceAccount.clientEmail
+  !serviceAccount.project_id ||
+  !serviceAccount.private_key ||
+  !serviceAccount.client_email
 ) {
   throw new Error("Firebase Admin service account is missing required fields.");
 }
