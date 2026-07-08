@@ -41,6 +41,8 @@ export async function POST(req: NextRequest) {
   ).metadata as StripeProductMetadata;
   const consultant_uid = productMetadata.consultant_uid;
 
+  console.log(productMetadata);
+
   const promises = [];
   for (let i = 0; i < parseInt(productMetadata.meeting_count); i++) {
     promises.push(

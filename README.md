@@ -2,6 +2,16 @@
 
 In Stripe: Create a product for each meeting type (single 30m, single 60m, package, etc). For each product, also include in the metadata the Calendly event type URL. This will be used to generate scheduling links.
 
+Stripe metadata should contain:
+
+```
+{
+    calendly_event_url: "https://api.calendly.com/" // used to generate single-schedule links,
+    meeting_count: 6, // number of meetings to generate
+    consultant_uid: "abc" // uid of consultant
+}
+```
+
 User flow:
 
 1. Click on Coach.
