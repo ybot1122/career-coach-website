@@ -159,6 +159,7 @@ export const FirebaseProvider = ({ children }: { children: ReactNode }) => {
     const userProfileResponse = await DataConnectClient.getUser({
       id: currentUser.uid,
     });
+
     setUserProfile(userProfileResponse?.data?.user ?? null);
   }, [auth]);
 

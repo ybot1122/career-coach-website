@@ -442,6 +442,7 @@ The `data` property is an object of type `GetUserData`, which is defined in [gen
 ```typescript
 export interface GetUserData {
   user?: {
+    id: string;
     displayName: string;
     email: string;
     role: string;
@@ -449,7 +450,7 @@ export interface GetUserData {
     photoUrl?: string | null;
     bio?: string | null;
     updatedAt?: TimestampString | null;
-  };
+  } & User_Key;
 }
 ```
 ### Using `GetUser`'s action shortcut function
