@@ -19,7 +19,9 @@ export default function MembersLayout({
     }
   }, [user, userProfile, router, loadUserProfile]);
 
-  // TODO: userProfile not loading after initial account creation
+  useEffect(() => {
+    loadUserProfile?.();
+  }, [loadUserProfile]);
 
   if (user === null || user === undefined || userProfile === undefined) {
     return (

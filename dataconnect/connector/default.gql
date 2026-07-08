@@ -80,8 +80,8 @@ mutation InsertUser(
 }
 
 query GetUser($id: String!) @auth(level: USER) {
-  user(id: $id) @redact {
-    id @check(expr: "this == auth.uid", message: "Disallowed operation")
+  user(id: $id) {
+    id @redact @check(expr: "this == auth.uid", message: "Disallowed operation")
     displayName
     email
     role

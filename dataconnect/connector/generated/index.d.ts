@@ -34,6 +34,15 @@ export interface GetMeetingVariables {
 }
 
 export interface GetUserData {
+  user?: {
+    displayName: string;
+    email: string;
+    role: string;
+    createdAt: TimestampString;
+    photoUrl?: string | null;
+    bio?: string | null;
+    updatedAt?: TimestampString | null;
+  };
 }
 
 export interface GetUserVariables {

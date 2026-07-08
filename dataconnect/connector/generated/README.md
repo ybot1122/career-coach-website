@@ -441,6 +441,15 @@ Recall that executing the `GetUser` query returns a `QueryPromise` that resolves
 The `data` property is an object of type `GetUserData`, which is defined in [generated/index.d.ts](./index.d.ts). It has the following fields:
 ```typescript
 export interface GetUserData {
+  user?: {
+    displayName: string;
+    email: string;
+    role: string;
+    createdAt: TimestampString;
+    photoUrl?: string | null;
+    bio?: string | null;
+    updatedAt?: TimestampString | null;
+  };
 }
 ```
 ### Using `GetUser`'s action shortcut function
@@ -454,13 +463,23 @@ const getUserVars: GetUserVariables = {
   id: ..., 
 };
 
-// Call the `getUser()` function to execute the query.// This query does not return any data, but you can still wait for it to complete.
-await getUser();
+// Call the `getUser()` function to execute the query.
+// You can use the `await` keyword to wait for the promise to resolve.
+const { data } = await getUser(getUserVars);
+// Variables can be defined inline as well.
+const { data } = await getUser({ id: ..., });
 
 // You can also pass in a `DataConnect` instance to the action shortcut function.
-await getUser(dataConnect);
+const dataConnect = getDataConnect(connectorConfig);
+const { data } = await getUser(dataConnect, getUserVars);
 
-console.log('Finished executing GetUser!');
+console.log(data.user);
+
+// Or, you can use the `Promise` API.
+getUser(getUserVars).then((response) => {
+  const data = response.data;
+  console.log(data.user);
+});
 ```
 
 ### Using `GetUser`'s `QueryRef` function
@@ -483,9 +502,17 @@ const ref = getUserRef({ id: ..., });
 const dataConnect = getDataConnect(connectorConfig);
 const ref = getUserRef(dataConnect, getUserVars);
 
-// Call `executeQuery()` on the reference to execute the query.// This query does not return any data, but you can still wait for it to complete.
-await executeQuery(ref);
-console.log('Finished executing GetUser!');
+// Call `executeQuery()` on the reference to execute the query.
+// You can use the `await` keyword to wait for the promise to resolve.
+const { data } = await executeQuery(ref);
+
+console.log(data.user);
+
+// Or, you can use the `Promise` API.
+executeQuery(ref).then((response) => {
+  const data = response.data;
+  console.log(data.user);
+});
 ```
 
 ## MeetingsForCurrentUser

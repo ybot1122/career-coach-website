@@ -136,6 +136,7 @@ export const FirebaseProvider = ({ children }: { children: ReactNode }) => {
     const unsubscribe = onAuthStateChanged(
       auth,
       async (user) => {
+        console.log(user);
         if (user === null) {
           setUserProfile(null);
         } else {
@@ -153,10 +154,8 @@ export const FirebaseProvider = ({ children }: { children: ReactNode }) => {
 
   const loadUserProfile = useCallback(async () => {
     if (!auth) return;
-
     const currentUser = auth.currentUser;
     if (!currentUser) return;
-
     const userProfileResponse = await DataConnectClient.getUser({
       id: currentUser.uid,
     });
