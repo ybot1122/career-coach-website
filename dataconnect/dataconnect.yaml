@@ -1,6 +1,6 @@
 specVersion: "v1"
 serviceId: "tobyscoaching-ffcc5-service"
-location: "us-central1"
+location: "us-east4"
 schemas:
   - source: "./schema"
     datasource:

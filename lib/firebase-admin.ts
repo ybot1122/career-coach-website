@@ -44,5 +44,5 @@ try {
 export const adminAuth = getAuth(adminApp);
 export const dataConnect = getDataConnect({
   serviceId: "tobyscoaching-ffcc5-service",
-  location: "us-central1",
+  location: "us-east4",
 });
