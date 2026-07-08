@@ -6,6 +6,7 @@ import {
   StripeProductMetadata,
 } from "@/types/StripeCheckout";
 import { dataConnect } from "@/lib/firebase-admin";
+import { MeetingStatus } from "@/types/MeetingStatus";
 
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
@@ -46,17 +47,14 @@ export async function POST(req: NextRequest) {
   const promises = [];
   for (let i = 0; i < parseInt(productMetadata.meeting_count); i++) {
     promises.push(
-      dataConnect.insert("meeting", {
-        member: {
-          id: sessionMetadata.customer_uid,
-        },
-        consultant: {
-          id: consultant_uid,
-        },
+      dataConnect.insert("Meeting", {
+        memberId: sessionMetadata.customer_uid,
+        consultantId: consultant_uid,
         stripeCheckoutSessionId: session.id,
         stripeProductId: sessionMetadata.product_id,
-        status: "unscheduled",
+        status: MeetingStatus.Unscheduled,
       })
+
     );
   }
 
