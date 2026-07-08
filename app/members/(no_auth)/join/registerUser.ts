@@ -37,6 +37,8 @@ export async function registerUser(
       email,
     });
 
+    console.log("User created:", result);
+
     return { success: true, email, password };
   } catch (error: any) {
     console.log(error);

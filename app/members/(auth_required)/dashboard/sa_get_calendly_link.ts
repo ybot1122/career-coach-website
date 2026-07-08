@@ -11,7 +11,7 @@ type CalendlySchedulingLinkResponse = {
 };
 
 const CALENDLY_CREDENTIALS = JSON.parse(process.env.CALENDLY_CREDENTIALS!);
-if (!CALENDLY_CREDENTIALS.clientSecret || !CALENDLY_CREDENTIALS.apiKey) {
+if (!CALENDLY_CREDENTIALS.apiKey) {
   throw new Error("Calendly API key not set in environment variables");
 }
 
