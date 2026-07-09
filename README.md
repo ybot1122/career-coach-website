@@ -7,6 +7,7 @@ A website with Stripe, Calendly, and Firebase integrations. I use Stripe to hand
 https://excalidraw.com/#json=yQXp4KGxbaa0b77MgUYyR,X_mBIPF4fxQ4VRGny6UDeg
 
 ## Video Demo
+https://github.com/user-attachments/assets/2c5e7b25-b6e7-4efb-b8b3-df646fbceef5
 
 
 ## Dev Notes
