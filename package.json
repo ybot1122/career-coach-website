@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack --experimental-https",
-    "build": "firebase dataconnect:sdk:migrate && firebase deploy && next build",
+    "build": "npx firebase dataconnect:sdk:migrate && npx firebase deploy && next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -25,6 +25,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "firebase-tools": "^15.22.4",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
