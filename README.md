@@ -1,4 +1,17 @@
+
+
 ## Career Coaching Website
+
+## Architecture Overview:
+
+https://excalidraw.com/#json=yQXp4KGxbaa0b77MgUYyR,X_mBIPF4fxQ4VRGny6UDeg
+
+## Video Demo
+
+
+
+## Dev Notes
+
 
 In Stripe: Create a product for each meeting type (single 30m, single 60m, package, etc). For each product, also include in the metadata the Calendly event type URL. This will be used to generate scheduling links.
 
