@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack --experimental-https",
-    "build": "npx firebase dataconnect:sdk:migrate && npx firebase deploy && next build",
+    "build": "firebase deploy --only dataconnect && next build",
     "start": "next start",
     "lint": "next lint"
   },
