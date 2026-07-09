@@ -145,7 +145,7 @@ export const FirebaseProvider = ({ children }: { children: ReactNode }) => {
         setUser(user);
       },
       (error) => {
-        setError(error.message || "Authentication state error");
+        console.error("Auth state error:", error);
       },
     );
 
@@ -156,11 +156,15 @@ export const FirebaseProvider = ({ children }: { children: ReactNode }) => {
     if (!auth) return;
     const currentUser = auth.currentUser;
     if (!currentUser) return;
-    const userProfileResponse = await DataConnectClient.getUser({
-      id: currentUser.uid,
-    });
+    try {
+      const userProfileResponse = await DataConnectClient.getUser({
+        id: currentUser.uid,
+      });
 
-    setUserProfile(userProfileResponse?.data?.user ?? null);
+      setUserProfile(userProfileResponse?.data?.user ?? null);
+    } catch (error) {
+      console.error("Error loading user profile:", error);
+    }
   }, [auth]);
 
   return (
